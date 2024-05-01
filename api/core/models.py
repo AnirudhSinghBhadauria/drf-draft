@@ -1,6 +1,8 @@
+from uuid import uuid4
 from django.db import models
 
 class Post(models.Model):
+    id = models.UUIDField( primary_key=True, default=uuid4, editable=False)
     title = models.CharField(max_length=255)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
