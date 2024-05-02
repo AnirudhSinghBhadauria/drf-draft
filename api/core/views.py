@@ -57,7 +57,7 @@ class PostViewSet(ViewSet):
 
         return Response(
             data = {
-                "message": "Deleted post succesfully",
+                "message": "Deleted post succesfully done",
             }, 
             status= status.HTTP_500_INTERNAL_SERVER_ERROR
         )
