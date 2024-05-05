@@ -50,6 +50,7 @@ class CustomUserManager(BaseUserManager):
 
 
 class User(AbstractUser):
+     username = None
      id = models.UUIDField(
           primary_key=True,
           editable=False, 
