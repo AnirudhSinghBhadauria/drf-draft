@@ -12,7 +12,8 @@ class TaskSerializer(ModelSerializer):
         
 class AssignDetailsSerializer(ModelSerializer):
     class Meta:
-        feilds = [
+        model = AssignDetails
+        fields = [
             'id', 'assignee', 'assignor', 'status',
             'status_update'
         ]

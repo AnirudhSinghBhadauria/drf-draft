@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from .models import User, Authorization
-
+from django.contrib.auth.hashers import make_password
         
 class AuthorizationSerializer(ModelSerializer):
     class Meta:
@@ -19,3 +19,7 @@ class UserSerializer(ModelSerializer):
             'created', 'updated'
         ]
         extra_kwargs = {'password': {'write_only': True}}
+    
+    def create(self, validated_data):
+        validated_data['password'] = make_password(validated_data['password'])
+        return super().create(validated_data)

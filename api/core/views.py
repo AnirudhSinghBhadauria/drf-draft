@@ -9,7 +9,9 @@ from rest_framework import status
 class UserViewSet(ViewSet):
     def list(slef, request: Request):
         queryset = User.objects.all()
-        serializer = UserSerializer(instance=queryset, many=True)
+        serializer = UserSerializer(
+            instance=queryset, many=True
+        )
 
         return Response(
             data = serializer.data, 
@@ -153,7 +155,8 @@ class AuthorizationViewSet(ViewSet):
         
         return Response(
             data={
-                "message": f"Authorization for user with email: {authorization.user_email} deleted succesfully!",
+                "message": 
+                    f"Authorization for user with email: {authorization.user_email} deleted succesfully!",
             },
             status=status.HTTP_200_OK
         )

@@ -41,7 +41,7 @@ class TaskViewSet(ViewSet):
             return Response(
                 data={
                     "message": "Error while crating a new task!",
-                    "error": serializer.errros,
+                    "error": serializer.errors,
                     "serializer_error": serializer.error_messages
                 }
             )
@@ -106,7 +106,7 @@ class AssignDetailsViewSet(ViewSet):
     def create(self, request: Request, pk=None):
         serializer = AssignDetailsSerializer(data=request.data)
 
-        if serializer.id_valid():
+        if serializer.is_valid():
             serializer.save()
 
             return Response(
