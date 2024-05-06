@@ -70,13 +70,12 @@ class User(AbstractUser):
      role = models.CharField(
           max_length=40,
           choices=ROLE, 
-          default='Associate trainee'
+          default='ASSOCIATE_TRAINEE'
      )
      authorization = models.ForeignKey(
           "core.Authorization", 
           on_delete=models.CASCADE, 
           related_name="user_authorizatoin",
-          null=True
      )
      created = models.DateTimeField(
           auto_now_add=True, 
@@ -115,7 +114,7 @@ class Authorization(models.Model):
      status = models.CharField(
           max_length=40, 
           choices=STATUS, 
-          default='Pending'
+          default='PENDING'
      )
      status_update = models.DateTimeField(
           auto_now_add=True,

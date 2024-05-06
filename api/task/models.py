@@ -26,12 +26,16 @@ class Task(models.Model):
      description = models.TextField(null=False)
      priority = models.CharField(
           choices=PRIORITY, 
-          default="Medium",
+          default="MEDIUM",
           max_length=50
      )
      tags = models.CharField(max_length=255, default='')
-     lead_time = models.DateTimeField(auto_now=True)
-     deadline = models.DateTimeField(auto_now=True)
+     lead_time = models.DateTimeField(
+           default='', editable=True
+     )
+     deadline = models.DateTimeField(
+           default='', editable=True
+     )
      assign_details = models.ForeignKey(
           "task.AssignDetails", 
           on_delete=models.CASCADE, 
@@ -73,7 +77,7 @@ class AssignDetails(models.Model):
      status = models.CharField(
           max_length=50,
           choices=STATUS, 
-          default="Pending"
+          default="PENDING"
      )
      status_update = models.DateTimeField(
           auto_now=True, 
